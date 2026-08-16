@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AEGIS Autopro frontend
 
 React/Vite portal with temporary role-based authentication and environment administration.
@@ -39,3 +40,6 @@ The System Operations selector reads active `Environments` rows with a `jurisdic
 - `ADMIN`: all portal and management permissions.
 - `TESTER`: dashboard, environments, and all existing testing operations.
 - `END_USER`: dashboard, System Status, and TXE Interacted Time. Other operation buttons remain visible but disabled.
+=======
+# AEGIS
+>>>>>>> a5c959e1f72076b98f02bccc7203561b22903f2e
