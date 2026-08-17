@@ -1,0 +1,142 @@
+/* ============================================================
+   System Operations & Game Configuration
+   ============================================================ */
+
+.operations-config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.operations-config-grid > .card {
+  margin-top: 0;
+}
+
+/* ============================================================
+   Game Configuration Table
+   ============================================================ */
+
+.game-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+}
+
+.game-table-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.game-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.game-meta {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.game-input {
+  flex: 1;
+  max-width: 280px;
+}
+
+.game-input input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  outline: none;
+}
+
+.game-input input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.submit-game-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.submit-game-btn {
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  transition: all 0.2s ease;
+}
+
+.submit-game-btn:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.submit-game-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ============================================================
+   Operations Actions Card
+   ============================================================ */
+
+.actions-card {
+  margin-top: 14px;
+}
+
+.action-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.operation-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  min-width: 120px;
+  height: 32px;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 11px;
+}
+
+/* ============================================================
+   Operations Responsive
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .operations-config-grid {
+    grid-template-columns: 1fr;
+  }
+}

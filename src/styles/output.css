@@ -1,0 +1,51 @@
+/* ============================================================
+   Output Terminal & Status Display
+   ============================================================ */
+
+.output-card {
+  margin-top: 14px;
+}
+
+.notice.wait {
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 14px;
+  font-weight: 750;
+}
+
+.empty-output {
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #64748b;
+  padding: 18px;
+  font-size: 14px;
+}
+
+.message-output {
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 16px;
+}
+
+.message-status {
+  margin-bottom: 10px;
+  font-weight: 850;
+}
+
+.message-status.success {
+  color: #16a34a;
+}
+
+.message-status.failed {
+  color: #dc2626;
+}
+
+.message-text {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #334155;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+}
