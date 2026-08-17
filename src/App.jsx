@@ -5,7 +5,7 @@ import OutputSection from './components/OutputSection';
 import { authService } from './services/AuthService';
 import { authorizationService } from './services/AuthorizationService';
 import { getRequest, postRequest } from './services/api';
-import { blankFile, blankGame, getIPv4Error } from './utils/helpers';
+import { blankFile, getIPv4Error } from './utils/helpers';
 import AdminSettingsPage from './pages/AdminSettingsPage';
 import CopyBuildFilesPage from './pages/CopyBuildFilesPage';
 import DashboardPage from './pages/DashboardPage';
@@ -42,7 +42,7 @@ function App() {
   const [response, setResponse] = React.useState(null);
   const [error, setError] = React.useState('');
   const [config, setConfig] = React.useState({ txe1: '', txe2: '', username: '', password: '', adServer: '', settime: '' });
-  const [games, setGames] = React.useState([blankGame(), blankGame()]);
+  const [games, setGames] = React.useState([]);
   const [rdbRestore, setRdbRestore] = React.useState({ rdb1: '', rdb2: '', username: '', password: '', restoreMode: 'Listener', restoreFilePath: '', dbName: '', restoreType: 'FULL' });
   const [txeRestore, setTxeRestore] = React.useState({ txe1: '', txe2: '', username: '', password: '', restoreFileName: '', restorePath: '' });
   const [copyRdb, setCopyRdb] = React.useState({ sourcePath: '', destinationPath: '', remoteServer1: '', remoteServer2: '', username: '', password: '', files: [blankFile()] });
@@ -85,9 +85,7 @@ function App() {
 
   const updateConfig = (field, value) => setConfig((previous) => ({ ...previous, [field]: value }));
   const updateGame = (index, field, value) => setGames((previous) => previous.map((game, gameIndex) => gameIndex === index ? { ...game, [field]: value } : game));
-  const addGame = () => setGames((previous) => [...previous, blankGame()]);
-  const removeGame = (index) => setGames((previous) => previous.length > 1 ? previous.filter((_, gameIndex) => gameIndex !== index) : previous);
-  const buildCommonPayload = () => ({ ...config, games: games.filter((game) => game.gameName.trim() || game.winningNumbers.trim()) });
+  const buildCommonPayload = () => ({ ...config, games: games.filter((game) => (game.gameName || game.game_name || '').trim() || (game.winningNumbers || '').trim()) });
 
   const normaliseErrorResponse = (requestError) => {
     if (requestError.response?.data) return requestError.response.data;
@@ -164,7 +162,7 @@ function App() {
 
   const renderPage = () => {
     switch (visiblePage) {
-      case 'operations': return <SystemOperationsPage config={config} updateConfig={updateConfig} games={games} updateGame={updateGame} addGame={addGame} removeGame={removeGame} callGet={callGet} callPost={callPost} buildCommonPayload={buildCommonPayload} loading={loading} canViewConfiguration={authorizationService.hasPermission(Permissions.VIEW_SYSTEM_OPERATIONS)} hasPermission={(permission) => authorizationService.hasPermission(permission)} />;
+      case 'operations': return <SystemOperationsPage config={config} updateConfig={updateConfig} games={games} setGames={setGames} updateGame={updateGame} callGet={callGet} callPost={callPost} buildCommonPayload={buildCommonPayload} loading={loading} canViewConfiguration={authorizationService.hasPermission(Permissions.VIEW_SYSTEM_OPERATIONS)} hasPermission={(permission) => authorizationService.hasPermission(permission)} />;
       case 'environments': return <EnvironmentManagementPage />;
       case 'users': return <UserManagementPage />;
       case 'restore-rdb': return <RestoreRdbPage rdbRestore={rdbRestore} setRdbRestore={setRdbRestore} callPost={callPost} loading={loading} />;

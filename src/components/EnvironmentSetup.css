@@ -1,0 +1,281 @@
+/* ============================================================
+   Environment Setup
+   ============================================================ */
+
+.environment-setup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 16px 0;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   Environment Fields
+   Label + dropdown stay on the same line
+   ============================================================ */
+
+.environment-setup .environment-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   Field Labels
+   ============================================================ */
+
+.environment-setup .environment-field > span {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 40px;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   Dropdowns
+   ============================================================ */
+
+.environment-setup .environment-field > select {
+  width: 220px;
+  min-width: 220px;
+  height: 40px;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #c9c9c9;
+  border-radius: 6px;
+
+  background-color: #fff;
+  color: #333;
+
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 40px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+
+/* Dropdown hover */
+
+.environment-setup .environment-field > select:hover:not(:disabled) {
+  border-color: #999;
+}
+
+
+/* Dropdown focus */
+
+.environment-setup .environment-field > select:focus {
+  outline: none;
+
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+
+/* Disabled dropdown */
+
+.environment-setup .environment-field > select:disabled {
+  background-color: #f3f3f3;
+  color: #999;
+  border-color: #d6d6d6;
+
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   Get Details / Get Games Button
+   ============================================================ */
+
+.environment-setup .get-games-button {
+  height: 40px;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #2563eb;
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.environment-setup .get-games-button:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+
+.environment-setup .get-games-button:active:not(:disabled) {
+  background-color: #1e40af;
+}
+
+
+.environment-setup .get-games-button:disabled {
+  background-color: #a5b4fc;
+  color: #fff;
+
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+
+/* ============================================================
+   Error Messages
+   ============================================================ */
+
+.environment-setup .form-error {
+  flex-basis: 100%;
+  width: 100%;
+
+  margin: 4px 0 0;
+  padding: 0;
+
+  color: #dc2626;
+
+  font-size: 14px;
+  line-height: 20px;
+}
+
+
+.environment-setup .environment-load-error {
+  margin-top: 4px;
+}
+
+
+.environment-setup .games-error {
+  margin-top: 4px;
+}
+
+
+/* ============================================================
+   Empty State
+   ============================================================ */
+
+.environment-setup .empty-state {
+  flex-basis: 100%;
+  width: 100%;
+
+  margin: 8px 0;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   Responsive - Tablet
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .environment-setup {
+    gap: 16px;
+  }
+
+  .environment-setup .environment-field > select {
+    width: 190px;
+    min-width: 190px;
+  }
+}
+
+
+/* ============================================================
+   Responsive - Smaller Screens
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .environment-setup {
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .environment-setup .environment-field {
+    flex: 1 1 300px;
+  }
+
+  .environment-setup .environment-field > select {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .environment-setup .get-games-button {
+    flex: 0 0 auto;
+  }
+}
+
+
+/* ============================================================
+   Responsive - Mobile
+   ============================================================ */
+
+@media (max-width: 600px) {
+  .environment-setup {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .environment-setup .environment-field {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .environment-setup .environment-field > span {
+    line-height: normal;
+  }
+
+  .environment-setup .environment-field > select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .environment-setup .get-games-button {
+    width: 100%;
+  }
+}

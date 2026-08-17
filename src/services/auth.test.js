@@ -57,7 +57,18 @@ describe('temporary authentication and authorization', () => {
     await users.createUser({ name: 'Another Admin', username: 'admin2', password: 'password', role: Roles.ADMIN, isActive: true });
     await users.createUser({ name: 'Another Tester', username: 'tester2', password: 'password', role: Roles.TESTER, isActive: true });
     await users.createUser({ name: 'Another User', username: 'user2', password: 'password', role: Roles.END_USER, isActive: true });
-    const environment = await environments.createEnvironment({ jurisdiction: 'AZ', name: 'Staging', description: 'Staging environment', status: 'ACTIVE' });
+    const environment = await environments.createEnvironment({
+      jurisdiction: 'AZ',
+      name: 'Staging',
+      environment: 'Staging',
+      txe1Ip: '10.10.1.10',
+      txe2Ip: '10.10.1.11',
+      adServerIp: '10.10.1.20',
+      username: 'admin',
+      password: 'password',
+      description: 'Staging environment',
+      status: 'ACTIVE'
+    });
     expect((await environments.listEnvironmentOptions()).some((item) => item.id === environment.id)).toBe(true);
     await environments.updateEnvironment(environment.id, { status: 'INACTIVE' });
     expect((await users.listUsers())).toHaveLength(6);
@@ -80,7 +91,7 @@ describe('temporary authentication and authorization', () => {
 
   it('limits an end user to System Status and TXE Interacted Time', async () => {
     await auth.login('enduser', 'user123');
-    expect(await environments.listEnvironmentOptions()).toHaveLength(8);
+    expect(await environments.listEnvironmentOptions()).toHaveLength(10);
     expect(authorization.hasPermission(Permissions.SYSTEM_STATUS)).toBe(true);
     expect(authorization.hasPermission(Permissions.TXE_INTERACTED_TIME)).toBe(true);
     expect(authorization.hasPermission(Permissions.RUN_SYSTEM_OPERATIONS)).toBe(false);

@@ -8,7 +8,7 @@ export const Permissions = Object.freeze({
   VIEW_DASHBOARD: 'VIEW_DASHBOARD',
   VIEW_SYSTEM_OPERATIONS: 'VIEW_SYSTEM_OPERATIONS',
   SYSTEM_STATUS: 'SYSTEM_STATUS',
-  IDLE_SYSTEM:'IDLE_SYSTEM',
+  IDLE_SYSTEM: 'IDLE_SYSTEM',
   TXE_INTERACTED_TIME: 'TXE_INTERACTED_TIME',
   RUN_SYSTEM_OPERATIONS: 'RUN_SYSTEM_OPERATIONS',
   VIEW_ENVIRONMENT_OPTIONS: 'VIEW_ENVIRONMENT_OPTIONS',
@@ -19,7 +19,7 @@ export const Permissions = Object.freeze({
   CREATE_USER: 'CREATE_USER',
   MANAGE_USERS: 'MANAGE_USERS',
   ADMIN_SETTINGS: 'ADMIN_SETTINGS'
-  });
+});
 
 // Each operation owns its authorization rule. Keeping this mapping next to the
 // role permissions prevents callers from choosing a less restrictive
@@ -28,7 +28,6 @@ export const OperationPermissions = Object.freeze({
   '/api/system-status': Permissions.SYSTEM_STATUS,
   '/api/idle-system': Permissions.IDLE_SYSTEM,
   '/api/bring-up-system': Permissions.RUN_SYSTEM_OPERATIONS,
-  '/api/run-shutdown':Permissions.RUN_SHUTDOWN,
   '/api/txe-interacted-time': Permissions.TXE_INTERACTED_TIME,
   '/api/enter-win-numbers': Permissions.RUN_SYSTEM_OPERATIONS,
   '/api/close-all-games': Permissions.RUN_SYSTEM_OPERATIONS,
